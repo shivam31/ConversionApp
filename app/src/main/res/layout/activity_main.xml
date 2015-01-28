@@ -57,13 +57,15 @@
             android:layout_marginBottom="30dp"
             android:layout_marginRight="30dp"
             android:text="@string/default_teaspoon_value"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/cup_text_view"
             android:layout_gravity="left|top"
             android:text=".0208 cup"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/tbs_text_view"
@@ -71,13 +73,15 @@
             android:layout_marginBottom="30dp"
             android:layout_marginRight="30dp"
             android:text=".3333 tbs"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/oz_text_view"
             android:layout_gravity="left|top"
             android:text=".1666 oz"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/kg_text_view"
@@ -85,13 +89,15 @@
             android:layout_marginBottom="30dp"
             android:layout_marginRight="30dp"
             android:text=".0057 kg"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/quart_text_view"
             android:layout_gravity="left|top"
             android:text=".0052 quart"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/gallon_text_view"
@@ -99,13 +105,15 @@
             android:layout_marginBottom="30dp"
             android:layout_marginRight="30dp"
             android:text=".0013 gallon"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/pound_text_view"
             android:layout_gravity="left|top"
             android:text=".0125 pound"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/ml_text_view"
@@ -113,13 +121,15 @@
             android:layout_marginBottom="30dp"
             android:layout_marginRight="30dp"
             android:text="4.9289 ml"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/liter_text_view"
             android:layout_gravity="left|top"
             android:text=".0049 liter"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/mg_text_view"
@@ -127,13 +137,15 @@
             android:layout_marginBottom="15dp"
             android:layout_marginRight="30dp"
             android:text="5687.5000 mg"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/pint_text_view"
             android:layout_gravity="left|top"
             android:text=".0104 pint"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/black" />
 
 
     </GridLayout>

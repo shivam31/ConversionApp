@@ -14,11 +14,10 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    private Spinner unitTypeSpinner;
-    private EditText amountText;
-
     TextView teaspoon, tablespoon, cup, ounce, pint, quart,
             gallon, pound, milliliter, liter, milligram, kilogram;
+    private Spinner unitTypeSpinner;
+    private EditText amountText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void AddListenerToUnitTypeListener() {
-        unitTypeSpinner.setOnItemClickListener(
+        unitTypeSpinner.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
 
                     @Override
@@ -42,12 +41,12 @@ public class MainActivity extends ActionBarActivity {
                         String itemSelectedInSpinner =
                                 parent.getItemAtPosition(position).toString();
 
-                        checkIfConvertingFromTsp(itemSelectedInSpinner);
+                        //checkIfConvertingFromTsp(itemSelectedInSpinner);
                     }
 
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
-                        
+
                     }
                 }
         );
@@ -103,4 +102,109 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void checkIfConvertingFromTsp(String currentUnit) {
+        if (currentUnit.equals("teaspoon")) {
+            updateUnitTypeUsingTsp(Quantity.Unit.tsp);
+        } else {
+            if (currentUnit.equals("tablespoon")) {
+                updateUnitTypeUsingOther(Quantity.Unit.tbs);
+            } else if (currentUnit.equals("cup")) {
+                updateUnitTypeUsingOther(Quantity.Unit.cup);
+            } else if (currentUnit.equals("ounce")) {
+                updateUnitTypeUsingOther(Quantity.Unit.oz);
+            } else if (currentUnit.equals("pint")) {
+                updateUnitTypeUsingOther(Quantity.Unit.pint);
+            } else if (currentUnit.equals("quart")) {
+                updateUnitTypeUsingOther(Quantity.Unit.quart);
+            } else if (currentUnit.equals("gallon")) {
+                updateUnitTypeUsingOther(Quantity.Unit.gallon);
+            } else if (currentUnit.equals("pound")) {
+                updateUnitTypeUsingOther(Quantity.Unit.pound);
+            } else if (currentUnit.equals("milliliter")) {
+                updateUnitTypeUsingOther(Quantity.Unit.ml);
+            } else if (currentUnit.equals("liter")) {
+                updateUnitTypeUsingOther(Quantity.Unit.liter);
+            } else if (currentUnit.equals("milligram")) {
+                updateUnitTypeUsingOther(Quantity.Unit.mg);
+            } else {
+                updateUnitTypeUsingOther(Quantity.Unit.kg);
+            }
+
+        }
+    }
+
+    public void updateUnitTypeUsingTsp(Quantity.Unit currentUnit) {
+        double doubleToConvert = Double.parseDouble(amountText.getText().toString());
+        String teaspoonValueAndUnit = doubleToConvert + " " + teaspoon;
+        teaspoon.setText(teaspoonValueAndUnit);
+
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.cup, cup);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.oz, ounce);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.pint, pint);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.quart, quart);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.gallon, gallon);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.pound, pound);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.ml, milliliter);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.liter, liter);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.mg, milligram);
+        updateUnitTextFieldsUsingTsp(doubleToConvert, Quantity.Unit.kg, kilogram);
+
+    }
+
+    public void updateUnitTextFieldsUsingTsp(double doubleToConvert,
+                                             Quantity.Unit unitConvertingTo,
+                                             TextView theTextView) {
+        Quantity unitQuantity = new Quantity(doubleToConvert, Quantity.Unit.tsp);
+        String tempUnit = unitQuantity.to(unitConvertingTo).toString();
+        theTextView.setText(tempUnit);
+    }
+
+    public void updateUnitTypeUsingOther(Quantity.Unit currentUnit) {
+        double doubleToConvert = Double.parseDouble(amountText.getText().toString());
+
+        Quantity currentyQuantitySelected = new Quantity(doubleToConvert
+                , currentUnit);
+
+        String valueInTeaspoons = currentyQuantitySelected.to(Quantity.Unit.tsp).toString();
+        teaspoon.setText(valueInTeaspoons);
+
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+        updateUnitTextFieldUsingTsp(doubleToConvert, currentUnit, Quantity.Unit.tbs, tablespoon);
+
+        if (currentUnit.name().equals(currentyQuantitySelected.unit.name())) {
+            String currentUnitTextViewText = doubleToConvert + " " +
+                    currentyQuantitySelected.unit.name();
+
+            String currentTextViewName = currentyQuantitySelected.unit.name() +
+                    "_text_view_";
+
+            int currentId = getResources().getIdentifier(currentTextViewName, "id", MainActivity.this.getPackageName());
+            TextView currentTextView = (TextView) findViewById(currentId);
+            currentTextView.setText(currentUnitTextViewText);
+        }
+    }
+
+    public void updateUnitTextFieldUsingTsp(double doubleToConvert,
+                                            Quantity.Unit currentUnit,
+                                            Quantity.Unit preferredUnit,
+                                            TextView targetTextView) {
+        Quantity currentQuantitySelected = new
+                Quantity(doubleToConvert, currentUnit);
+
+        String tempTextViewText = currentQuantitySelected.to(
+                preferredUnit).toString();
+        targetTextView.setText(tempTextViewText);
+    }
+
 }
